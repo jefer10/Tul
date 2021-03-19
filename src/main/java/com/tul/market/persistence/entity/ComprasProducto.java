@@ -1,11 +1,9 @@
 package com.tul.market.persistence.entity;
 
 import javax.persistence.*;
-
 @Entity
 @Table(name = "compras_productos")
 public class ComprasProducto {
-
     @EmbeddedId
     private ComprasProductoPK id;
 
@@ -13,10 +11,11 @@ public class ComprasProducto {
     private Double total;
     private Boolean estado;
 
+
     @ManyToOne
-    @MapsId("idCompra")
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
     private Compra compra;
+
 
     @ManyToOne
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)
@@ -54,6 +53,7 @@ public class ComprasProducto {
         this.estado = estado;
     }
 
+    /*
     public Compra getCompra() {
         return compra;
     }
@@ -69,4 +69,6 @@ public class ComprasProducto {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
+
+     */
 }

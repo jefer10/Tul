@@ -1,9 +1,8 @@
 package com.tul.market.persistence.entity;
 
 import javax.persistence.*;
-
 @Entity
-@Table
+@Table(name = "productos")
 public class Producto {
 
     @Id
@@ -26,11 +25,6 @@ public class Producto {
     private Integer cantidadStock;
 
     private Boolean estado;
-
-    private String descripcion;
-
-    private Boolean descuento;
-
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
@@ -90,22 +84,6 @@ public class Producto {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Boolean getDescuento() {
-        return descuento;
-    }
-
-    public void setDescuento(Boolean descuento) {
-        this.descuento = descuento;
     }
 
     public Categoria getCategoria() {

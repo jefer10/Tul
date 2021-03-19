@@ -1,12 +1,11 @@
 package com.tul.market.persistence.entity;
 
-import org.springframework.data.annotation.Id;
+
 
 import javax.persistence.*;
 import java.util.List;
-
 @Entity
-@Table(name="categorias")
+@Table(name = "categorias")
 public class Categoria {
 
     @Id
