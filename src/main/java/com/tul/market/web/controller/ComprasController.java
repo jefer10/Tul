@@ -1,5 +1,6 @@
 package com.tul.market.web.controller;
 
+import com.tul.market.persistence.CompraRepository;
 import com.tul.market.persistence.crud.CompraCrudRepository;
 import com.tul.market.persistence.entity.Compra;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,11 @@ import java.util.List;
 public class ComprasController {
 
     @Autowired
-    private CompraCrudRepository compraCrudRepository;
+    private CompraRepository compraRepository;
 
     @RequestMapping("/all")
     public List<Compra> getAll(){
-        return (List<Compra>) compraCrudRepository.findAll();
+        return compraRepository.getAll();
     }
 
     @RequestMapping("/hola")
