@@ -1,6 +1,8 @@
 package com.tul.market.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(name = "productos")
 public class Producto {
@@ -12,27 +14,26 @@ public class Producto {
 
     private String nombre;
 
-    @Column(name = "id_categoria")
-    private Integer idCategoria;
-
-    @Column(name = "sku")
-    private String codigoBarras;
+    @Column(name = "codigo_barras")
+    private String sku;
 
     @Column(name = "precio")
     private Double precioVenta;
 
-    @Column(name = "cantidad_stock")
-    private Integer cantidadStock;
-
-    private Boolean estado;
-
-    private String descripcion;
+    @OneToMany(mappedBy = "producto")
+    private List<ComprasProducto> comprasProducto;
 
     private Boolean descuento;
 
-    @ManyToOne
-    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-    private Categoria categoria;
+    private String descripcion;
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
 
     public Integer getIdProducto() {
         return idProducto;
@@ -50,20 +51,13 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public Integer getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(Integer idCategoria) {
-        this.idCategoria = idCategoria;
-    }
 
     public String getCodigoBarras() {
-        return codigoBarras;
+        return sku;
     }
 
-    public void setCodigoBarras(String codigoBarras) {
-        this.codigoBarras = codigoBarras;
+    public void setCodigoBarras(String sku) {
+        this.sku = sku;
     }
 
     public Double getPrecioVenta() {
@@ -72,22 +66,6 @@ public class Producto {
 
     public void setPrecioVenta(Double precioVenta) {
         this.precioVenta = precioVenta;
-    }
-
-    public Integer getCantidadStock() {
-        return cantidadStock;
-    }
-
-    public void setCantidadStock(Integer cantidadStock) {
-        this.cantidadStock = cantidadStock;
-    }
-
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
     }
 
     public String getDescripcion() {

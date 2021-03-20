@@ -4,9 +4,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "compras_productos")
 public class ComprasProducto {
-    @EmbeddedId
-    private ComprasProductoPK id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_compras_productos")
+    private Integer id;
 
+    private Integer id_compra;
+    private Integer id_producto;
     private Integer cantidad;
     private Double total;
     private Boolean estado;
@@ -21,12 +25,28 @@ public class ComprasProducto {
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)
     private Producto producto;
 
-    public ComprasProductoPK getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(ComprasProductoPK id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getId_compra() {
+        return id_compra;
+    }
+
+    public void setId_compra(Integer id_compra) {
+        this.id_compra = id_compra;
+    }
+
+    public Integer getId_producto() {
+        return id_producto;
+    }
+
+    public void setId_producto(Integer id_producto) {
+        this.id_producto = id_producto;
     }
 
     public Integer getCantidad() {
@@ -53,15 +73,6 @@ public class ComprasProducto {
         this.estado = estado;
     }
 
-    /*
-    public Compra getCompra() {
-        return compra;
-    }
-
-    public void setCompra(Compra compra) {
-        this.compra = compra;
-    }
-
     public Producto getProducto() {
         return producto;
     }
@@ -70,5 +81,4 @@ public class ComprasProducto {
         this.producto = producto;
     }
 
-     */
 }

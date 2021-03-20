@@ -32,6 +32,19 @@ public class ProductoService {
         return productoRepository.save(producto);
     }
 
+    public Producto update(Producto producto){
+        Optional<Producto> old=getProducto(producto.getIdProducto());
+        if (old.get().getDescuento()!=producto.getDescuento()){
+            if(producto.getDescuento()==true){
+                producto.setPrecioVenta((producto.getPrecioVenta())/2);
+            }else{
+                producto.setPrecioVenta((producto.getPrecioVenta())*2);
+            }
+            return productoRepository.save(producto);
+        }
+        return productoRepository.save(producto);
+    }
+
 
     public void delete(int productId) {
         productoRepository.delete(productId);

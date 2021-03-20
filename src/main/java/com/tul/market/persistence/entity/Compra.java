@@ -25,14 +25,16 @@ public class Compra {
 
     private String comentario;
     private String estado;
+    private Integer total;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
+    //@ElementCollection
+    @OneToMany(mappedBy = "compra")
+    private List<ComprasProducto> comprasProductos;
 
-    @OneToMany(mappedBy = "producto")
-    private List<ComprasProducto> productos;
 
     public Integer getIdCompra() {
         return idCompra;
@@ -89,14 +91,20 @@ public class Compra {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
+*/
     public List<ComprasProducto> getProductos() {
-        return productos;
+        return comprasProductos;
     }
 
-    public void setProductos(List<ComprasProducto> productos) {
-        this.productos = productos;
+    public void setProductos(List<ComprasProducto> comprasProductos) {
+        this.comprasProductos = comprasProductos;
     }
 
- */
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
 }
