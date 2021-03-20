@@ -25,7 +25,7 @@ public class Compra {
 
     private String comentario;
     private String estado;
-    private Integer total;
+    private Double total;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
@@ -100,11 +100,11 @@ public class Compra {
         this.comprasProductos = comprasProductos;
     }
 
-    public Integer getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(Double total) {
         this.total = total;
     }
 }

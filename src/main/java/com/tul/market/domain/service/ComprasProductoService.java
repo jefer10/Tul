@@ -26,7 +26,8 @@ public class ComprasProductoService {
 
 
     public ComprasProducto save(ComprasProducto comprasProducto) {
-
+        comprasProducto.setTotal(
+                comprasProducto.getCantidad()*comprasProducto.getProducto().getPrecioVenta());
         return comprasProductoRepository.save(comprasProducto);
     }
 
