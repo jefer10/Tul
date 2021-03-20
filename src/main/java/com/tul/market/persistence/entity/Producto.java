@@ -26,6 +26,10 @@ public class Producto {
 
     private Boolean estado;
 
+    private String descripcion;
+
+    private Boolean descuento;
+
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
     private Categoria categoria;
@@ -86,11 +90,19 @@ public class Producto {
         this.estado = estado;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Boolean getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(Boolean descuento) {
+        this.descuento = descuento;
     }
 }
