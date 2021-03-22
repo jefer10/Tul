@@ -7,6 +7,7 @@ import com.tul.market.persistence.entity.Compra;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,12 +24,12 @@ public class ComprasController {
     }
 
     @PostMapping("/save")
-    public Compra save(@RequestBody Compra compra){
+    public Compra save(@RequestBody @Valid Compra compra){
         return compraService.save(compra);
     }
 
     @PostMapping("/update")
-    public Compra update(@RequestBody Compra compra){
+    public Compra update(@RequestBody @Valid Compra compra){
         return compraService.save(compra);
     }
 

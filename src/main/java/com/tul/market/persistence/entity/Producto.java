@@ -3,6 +3,7 @@ package com.tul.market.persistence.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,17 +20,22 @@ public class Producto {
     @Column(name = "id_producto")
     private UUID id;
 
+    @NotNull(message = "Debes especificar el nombre del producto")
     private String nombre;
 
+    @NotNull(message = "Debes especificar el nombre")
     @Column(name = "codigo_barras")
     private String sku;
 
+    @NotNull(message = "Debes especificar el precio")
     @Column(name = "precio")
     private Double precioVenta;
 
     @OneToMany(mappedBy = "producto")
     private List<ComprasProducto> comprasProducto;
 
+
+    @NotNull(message = "Debes especificar si esta en descuento")
     private Boolean descuento;
 
 

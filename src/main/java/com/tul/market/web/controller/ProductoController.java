@@ -6,6 +6,7 @@ import com.tul.market.persistence.entity.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -23,12 +24,12 @@ public class ProductoController {
     }
 
     @PostMapping("/save")
-    public Producto save(@RequestBody Producto producto){
+    public Producto save(@RequestBody @Valid Producto producto){
         return productoService.save(producto);
     }
 
     @PostMapping("/update")
-    public Producto update(@RequestBody Producto producto){
+    public Producto update(@RequestBody @Valid Producto producto){
         return productoService.save(producto);
     }
 

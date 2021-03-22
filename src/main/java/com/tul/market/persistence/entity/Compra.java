@@ -2,8 +2,10 @@ package com.tul.market.persistence.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -21,14 +23,18 @@ public class Compra {
     @Column(name = "id_compra")
     private UUID idCompra;
 
+    @NotNull(message = "Debes especificar el id del cliente")
     @Column(name = "id_cliente")
     private String idCliente;
 
     private LocalDateTime fecha;
 
+
+    @Pattern(regexp = "(E|T)")
     @Column(name = "medio_pago")
     private String medioPago;
 
+    @NotNull(message = "Debes especificar el comentario de la compra")
     private String comentario;
     private String estado;
     private Double total;
