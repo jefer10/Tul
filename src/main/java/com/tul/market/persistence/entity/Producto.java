@@ -1,16 +1,23 @@
 package com.tul.market.persistence.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "productos")
 public class Producto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
     @Column(name = "id_producto")
-    private Integer idProducto;
+    private UUID id;
 
     private String nombre;
 
@@ -25,22 +32,23 @@ public class Producto {
 
     private Boolean descuento;
 
+
     private String descripcion;
 
+
+    public UUID getIdProducto() {
+        return id;
+    }
+
+    public void setIdProducto(UUID id) {
+        this.id = id;
+    }
     public String getSku() {
         return sku;
     }
 
     public void setSku(String sku) {
         this.sku = sku;
-    }
-
-    public Integer getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(Integer idProducto) {
-        this.idProducto = idProducto;
     }
 
     public String getNombre() {
@@ -83,4 +91,6 @@ public class Producto {
     public void setDescuento(Boolean descuento) {
         this.descuento = descuento;
     }
+
+
 }

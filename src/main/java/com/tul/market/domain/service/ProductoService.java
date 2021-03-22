@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ProductoService {
@@ -20,14 +21,14 @@ public class ProductoService {
     }
 
 
-    public Optional<Producto> getProducto(int productoId) {
+    public Optional<Producto> getProducto(UUID productoId) {
         return productoRepository.getProducto(productoId);
     }
 
 
     public Producto save(Producto producto) {
         if(producto.getDescuento()){
-            producto.setPrecioVenta((producto.getPrecioVenta())/2);
+           producto.setPrecioVenta((producto.getPrecioVenta())/2);
         }
         return productoRepository.save(producto);
     }
@@ -46,7 +47,7 @@ public class ProductoService {
     }
 
 
-    public void delete(int productId) {
+    public void delete(UUID productId) {
         productoRepository.delete(productId);
     }
 }
