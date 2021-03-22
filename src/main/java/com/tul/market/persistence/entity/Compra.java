@@ -1,19 +1,25 @@
 package com.tul.market.persistence.entity;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "compras")
 public class Compra {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
     @Column(name = "id_compra")
-    private Integer idCompra;
+    private UUID idCompra;
 
     @Column(name = "id_cliente")
     private String idCliente;
@@ -36,11 +42,11 @@ public class Compra {
     private List<ComprasProducto> comprasProductos;
 
 
-    public Integer getIdCompra() {
+    public UUID getIdCompra() {
         return idCompra;
     }
 
-    public void setIdCompra(Integer idCompra) {
+    public void setIdCompra(UUID idCompra) {
         this.idCompra = idCompra;
     }
 

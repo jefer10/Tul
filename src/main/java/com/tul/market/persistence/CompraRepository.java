@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class CompraRepository {
@@ -19,7 +20,7 @@ public class CompraRepository {
     }
 
 
-    public Optional<Compra> getCompra(int compraId) {
+    public Optional<Compra> getCompra(UUID compraId) {
         return compraCrudRepository.findById(compraId);
     }
 
@@ -29,7 +30,7 @@ public class CompraRepository {
     }
 
 
-    public void delete(int productId) {
+    public void delete(UUID productId) {
         compraCrudRepository.deleteById(productId);
     }
 

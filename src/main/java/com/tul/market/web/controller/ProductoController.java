@@ -27,6 +27,11 @@ public class ProductoController {
         return productoService.save(producto);
     }
 
+    @PostMapping("/update")
+    public Producto update(@RequestBody Producto producto){
+        return productoService.save(producto);
+    }
+
     @GetMapping("/{id}")
     public Optional<Producto> getProducto(@PathVariable("id") UUID id){
         return productoService.getProducto(id);

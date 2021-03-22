@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CompraService {
@@ -20,7 +21,7 @@ public class CompraService {
         return (List<Compra>) compraRepository.getAll();
     }
 
-    public Optional<Compra> getCompra(int compraId) {
+    public Optional<Compra> getCompra(UUID compraId) {
         return compraRepository.getCompra(compraId);
     }
 
@@ -30,11 +31,11 @@ public class CompraService {
     }
 
 
-    public void delete(int productId) {
+    public void delete(UUID productId) {
         compraRepository.delete(productId);
     }
 
-    public Compra checkout(int compraId){
+    public Compra checkout(UUID compraId){
         Optional<Compra>compraFinal= getCompra(compraId);
         compraFinal.map(compra -> {
           List<ComprasProducto>comprasProductos= compra.getProductos();

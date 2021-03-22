@@ -5,12 +5,10 @@ import com.tul.market.persistence.CompraRepository;
 import com.tul.market.persistence.crud.CompraCrudRepository;
 import com.tul.market.persistence.entity.Compra;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/compras")
@@ -24,9 +22,24 @@ public class ComprasController {
         return compraService.getAll();
     }
 
+    @PostMapping("/save")
+    public Compra save(@RequestBody Compra compra){
+        return compraService.save(compra);
+    }
+
+    @PostMapping("/update")
+    public Compra update(@RequestBody Compra compra){
+        return compraService.save(compra);
+    }
+
     @RequestMapping("/checkout/{id}")
-    public Compra checkout(@PathVariable("id")int id){
+    public Compra checkout(@PathVariable("id") UUID id){
         return compraService.checkout(id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable("id") UUID id){
+        compraService.delete(id);
     }
 
     @RequestMapping("/hola")
