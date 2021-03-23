@@ -1,6 +1,9 @@
 package com.tul.market.persistence.entity;
 
 import javax.persistence.*;
+import java.util.UUID;
+
+
 @Entity
 @Table(name = "compras_productos")
 public class ComprasProducto {
@@ -9,8 +12,8 @@ public class ComprasProducto {
     @Column(name = "id_compras_productos")
     private Integer id;
 
-    private Integer id_compra;
-    private Integer id_producto;
+    private UUID id_compra;
+    private UUID id_producto;
     private Integer cantidad;
     private Double total;
     private Boolean estado;
@@ -33,19 +36,19 @@ public class ComprasProducto {
         this.id = id;
     }
 
-    public Integer getId_compra() {
+    public UUID getId_compra() {
         return id_compra;
     }
 
-    public void setId_compra(Integer id_compra) {
+    public void setId_compra(UUID id_compra) {
         this.id_compra = id_compra;
     }
 
-    public Integer getId_producto() {
+    public UUID getId_producto() {
         return id_producto;
     }
 
-    public void setId_producto(Integer id_producto) {
+    public void setId_producto(UUID id_producto) {
         this.id_producto = id_producto;
     }
 
@@ -81,4 +84,21 @@ public class ComprasProducto {
         this.producto = producto;
     }
 
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+
+    @Override
+    public String toString() {
+        return "ComprasProducto{" +
+                "id=" + id +
+                ", id_compra=" + id_compra +
+                ", id_producto=" + id_producto +
+                ", cantidad=" + cantidad +
+                ", total=" + total +
+                ", estado=" + estado +
+                ", compra=" + compra +
+                ", producto=" + producto +
+                '}';
+    }
 }

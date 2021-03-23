@@ -3,6 +3,7 @@ package com.tul.market.domain.service;
 import com.tul.market.persistence.CompraRepository;
 import com.tul.market.persistence.entity.Compra;
 import com.tul.market.persistence.entity.ComprasProducto;
+import com.tul.market.persistence.entity.Estado;
 import com.tul.market.persistence.entity.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,7 @@ public class CompraService {
 
 
     public Compra save(Compra compra) {
+        compra.setEstado(Estado.PENDIENTE);
         return compraRepository.save(compra);
     }
 
@@ -47,6 +49,7 @@ public class CompraService {
             compra.setTotal(totalf);
             return compra;
         });
+        compraFinal.get().setEstado(Estado.COMPLETADO);
         return compraRepository.save(compraFinal.get());
     }
 }

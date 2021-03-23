@@ -36,7 +36,11 @@ public class Compra {
 
     @NotNull(message = "Debes especificar el comentario de la compra")
     private String comentario;
-    private String estado;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado")
+    private Estado estado;
+
     private Double total;
 
     @ManyToOne
@@ -88,11 +92,11 @@ public class Compra {
         this.comentario = comentario;
     }
 
-    public String getEstado() {
+    public Estado getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Estado estado) {
         this.estado = estado;
     }
 /*
@@ -119,4 +123,21 @@ public class Compra {
     public void setTotal(Double total) {
         this.total = total;
     }
+
+    @Override
+    public String toString() {
+        return "Compra{" +
+                "idCompra=" + idCompra +
+                ", idCliente='" + idCliente + '\'' +
+                ", fecha=" + fecha +
+                ", medioPago='" + medioPago + '\'' +
+                ", comentario='" + comentario + '\'' +
+                ", estado=" + estado +
+                ", total=" + total +
+                ", cliente=" + cliente +
+                ", comprasProductos=" + comprasProductos +
+                '}';
+    }
+
+
 }
